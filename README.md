@@ -8,6 +8,7 @@ Script **run_analyisis.r** has been deevloped for the course project **"Getting 
 <li>Download data at this link: [https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)</li>
 <li>Save zip file in the working directory, together with **run_analyisis.r**</li>
 <li>Unzip the file so that directory **"UNCI HAR Dataset"**, containing the data, is created under the working directory</li>
+</ol>
 
 
 Script **run_analyisis.r** does the following. 
