@@ -1,5 +1,5 @@
-Getting tidy dataset from Samsung Galaxy S accelerometers data
-==============================================================
+#Getting tidy dataset from Samsung Galaxy S accelerometers data
+
 
 Script **run_analyisis.r** has been deevloped for the course project **"Getting and Cleaning Data"** available on coursera.org.
 
