@@ -20,14 +20,21 @@ read_set <- function(set_type){
         subject <- read.table(subjects)
         X <- read.table(X)
         y <- read.table(y)
-        #readtables with inertial signals
+        #readtables containing inertial signals
         inertial_signals_table <- read.table(inertial_signals[1])
         for(i in 2:9){
           inertial_signals_table <- cbind(inertial_signals_table,read.table(inertial_signals[i]))
         }
+        
         #merge in single dataframe
-        set_type <- gl(1,1,length(subjects),set_type)   #add column defining type of set
-        data.frame(set_type,subject,y,X,inertial_signals_table)
+        set_type <- gl(1,1,length(subjects),set_type)   #column defining type of set
+        #---Column order
+        #   1:561 -> X features
+        #   562:1713 -> inertial_signals
+        #   1714 -> set_type
+        #   1715 -> subject
+        #   1716 -> activity
+        data.frame(X,inertial_signals_table,set_type,subject,y)
 }
 
 
