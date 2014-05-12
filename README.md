@@ -1,4 +1,4 @@
-#Getting tidy dataset from Samsung Galaxy S accelerometers data
+#Getting dataset from Samsung Galaxy S accelerometers data
 
 
 Script **run_analyisis.r** has been deevloped for the course project **"Getting and Cleaning Data"** available on coursera.org.
@@ -19,4 +19,45 @@ Script **run_analyisis.r** does the following.
 <li>Appropriately labels the data set with descriptive activity names.</li>
 <li>Creates a second, independent tidy data set with the average of each variable for each activity and each subject.</li>
 </ol>
+
+##Description of the script 
+
+Script **run_analyisis.r** has a main section at its bottom:
+
+```
+#Generate dataset
+data <- generate_dataset()
+
+#Generate and save tidy dataset
+tidy_dataset <- generate_tidy_dataset(data)
+write.csv(tidy_dataset,"tidy_dataset.csv")
+```
+
+This section generates of code generates two dataset:
+<ul>
+<li>**data** dataframe, cotaining observations for different observations for subjects performing different activities</li>
+<li>**tidy_dataset** dataframe, cotaining average values of measures for each subject and each activity</li>
+</ul>
+
+Script **run_analyisis.r** includes functions whose structure in call order is:
+<ul>
+<li>**generate_dataset**: calls functions here below in approrpiate order and returns **data**. Before returning the dataframe, the function re-orders the columns in a meaningful order.</li>
+<ul>
+<li>**read_set**: loads the data from the source files and generates a single dataframe</li>
+<li>**select_meanstd**: selects only measurements on the mean and standard deviation.</li>
+<li>**name_activities**: updates activities in the data set with descriptive names</li>
+<li>**update_levels**: redefines factor levels for the activity names so that the underlying numeric class of factors is consistent with labelling as defined in the input file **activity_labels.txt**</li>
+</ul>
+<li>**generate_tidy_dataset**: Creates a second, independent tidy data set with the average of each variable for each activity and each subject</li>
+</ul>
+
+#Level1
+
+The main code calls 
+
+
+
+
+
+
 

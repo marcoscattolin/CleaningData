@@ -50,7 +50,7 @@ select_meanstd <- function(dataset){
       
       #select for X features only columns of interest, preserve cols for subject,activity,set_type
       dataset <- dataset[,c(feat_vec,c(1714:1715))]
-      n <- c(as.character(feat_names),"subject","activity")
+      n <- c(as.character(feat_names),"subject","activity_id")
       colnames(dataset) <- n
       dataset
 }
@@ -61,7 +61,7 @@ name_activities <-function(dataset){
       activities_labels <- read.table(file)
       
       #merge id with labels table
-      dataset <- merge(activities_labels,data, by.x="V1", by.y="activity")
+      dataset <- merge(activities_labels,dataset, by.x="V1", by.y="activity_id")
       
       #set column names
       colnames(dataset)[1:2] <- c("activity_id","activity")
@@ -80,28 +80,40 @@ update_levels <- function(dataset){
   
 }
 
-reshape_dataset <- function(dataset){
-      melted <- melt(dataset, id=c("subject","activity"))
-      dcast(melted, subject+activity ~ variable,mean)
+generate_dataset <- function(){
+
+        #Step 1
+        train_set <- read_set("train")      #load training set
+        test_set <- read_set("test")        #load test set
+        data <- rbind(train_set,test_set)   #append training and test set into single data set
+        
+        #Step 2
+        data <- select_meanstd(data)        #select mean and std columns, keep subject,activity,assign column names
+        
+        #Step 3
+        data <- name_activities(data)       #import activity labels
+        
+        #Step 4
+        data <- update_levels(data)         #redefine levels for activities coeherently with activity_labels.txt
+        
+        #reorder columns
+        tmp <- data
+        data[,1] <- tmp[,length(data)]
+        data[,2:length(data)] <- tmp[,1:(length(data)-1)]
+        colnames(data) <- c(colnames(data)[length(data)],colnames(data)[1:length(data)-1])
+        data
+        
 }
 
+generate_tidy_dataset <- function(dataset){
+        melted <- melt(dataset, id=c("subject","activity"))
+        dcast(melted, subject+activity ~ variable,mean)
+}
 
+#Generate dataset
+data <- generate_dataset()
 
-#Step 1
-train_set <- read_set("train")      #load training set
-test_set <- read_set("test")        #load test set
-data <- rbind(train_set,test_set)   #append training and test set into single data set
-
-#Step 2
-data <- select_meanstd(data)        #select mean and std columns, keep subject,activity,assign column names
-
-#Step 3
-data <- name_activities(data)       #import activity labels
-
-#Step 4
-data <- update_levels(data)         #redefine levels for activities coeherently with activity_labels.txt
-
-#Step 5
-average_data <- reshape_dataset(data)    #average of features per each subject and activity
-
+#Generate and save tidy dataset
+tidy_dataset <- generate_tidy_dataset(data)
+write.csv(tidy_dataset,"tidy_dataset.csv")
 
