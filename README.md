@@ -18,6 +18,7 @@ Script **run_analyisis.r** does the following.
 <li>Uses descriptive activity names to name the activities in the data set.</li>
 <li>Appropriately labels the data set with descriptive activity names.</li>
 <li>Creates a second, independent tidy data set with the average of each variable for each activity and each subject.</li>
+<li>Saves tidy data set in **tidy_dataset.txt** in csv format</li>
 </ol>
 
 ##Description of the script 

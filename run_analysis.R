@@ -115,5 +115,5 @@ data <- generate_dataset()
 
 #Generate and save tidy dataset
 tidy_dataset <- generate_tidy_dataset(data)
-write.csv(tidy_dataset,"tidy_dataset.csv")
+write.csv(tidy_dataset,"tidy_dataset.txt")
 
