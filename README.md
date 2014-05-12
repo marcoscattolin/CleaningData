@@ -39,8 +39,8 @@ This section generates of code generates two dataset:
 
 Script **run_analyisis.r** includes functions. In call order these functions are:
 
-- **generate_dataset**: calls functions here below in approrpiate order and returns **data**. Before returning the dataframe, the function re-orders the columns in a meaningful order
-    - **read_set**: loads the data from the source files and generates a single dataframe
+- **generate_dataset**: calls functions here below in approrpiate order and returns **data**. Function read_set is called tow times: one for training set and one for test set. Once the two sets are loaded, they are merged together. Before returning the dataframe, the function re-orders the columns in a meaningful order
+    - **read_set**: loads the data from the source files and generates a single dataframe. Input parameter defines if function shall load training set or test set.
     - **select_meanstd**: selects only measurements on the mean and standard deviation
     - **name_activities**: updates activities in the data set with descriptive names
     - **update_levels**: redefines factor levels for the activity names so that the underlying numeric class of factors is consistent with labelling as defined in the input file **activity_labels.txt**
