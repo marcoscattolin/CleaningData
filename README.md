@@ -34,26 +34,18 @@ write.csv(tidy_dataset,"tidy_dataset.csv")
 ```
 
 This section generates of code generates two dataset:
-<ul>
-<li>**data** dataframe, cotaining observations for different observations for subjects performing different activities</li>
-<li>**tidy_dataset** dataframe, cotaining average values of measures for each subject and each activity</li>
-</ul>
+- **data** dataframe, cotaining observations for different observations for subjects performing different activities
+- **tidy_dataset** dataframe, cotaining average values of measures for each subject and each activity
 
-Script **run_analyisis.r** includes functions whose structure in call order is:
-<ul>
-<li>**generate_dataset**: calls functions here below in approrpiate order and returns **data**. Before returning the dataframe, the function re-orders the columns in a meaningful order.</li>
-<ul>
-<li>**read_set**: loads the data from the source files and generates a single dataframe</li>
-<li>**select_meanstd**: selects only measurements on the mean and standard deviation.</li>
-<li>**name_activities**: updates activities in the data set with descriptive names</li>
-<li>**update_levels**: redefines factor levels for the activity names so that the underlying numeric class of factors is consistent with labelling as defined in the input file **activity_labels.txt**</li>
-</ul>
-<li>**generate_tidy_dataset**: Creates a second, independent tidy data set with the average of each variable for each activity and each subject</li>
-</ul>
+Script **run_analyisis.r** includes functions. In call order these functions are:
 
-#Level1
+- **generate_dataset**: calls functions here below in approrpiate order and returns **data**. Before returning the dataframe, the function re-orders the columns in a meaningful order
+        - **read_set**: loads the data from the source files and generates a single dataframe
+        - **select_meanstd**: selects only measurements on the mean and standard deviation
+        - **name_activities**: updates activities in the data set with descriptive names
+        - **update_levels**: redefines factor levels for the activity names so that the underlying numeric class of factors is consistent with labelling as defined in the input file **activity_labels.txt**
 
-The main code calls 
+- **generate_tidy_dataset**: Creates a second, independent tidy data set with the average of each variable for each activity and each subject
 
 
 
