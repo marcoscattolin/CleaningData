@@ -6,13 +6,15 @@
 
 First column fo the dataset **subject** contains numeric identifier of the subject for which the measures where taken.
 Second column fo the dataset **activity** contains the name of the activity during witch measures were taken. Column is a factor whose levels are defined as:
-1. WALKING
-2. WALKING_UPSTAIRS
-3. WALKING_DOWNSTAIRS
-4. SITTING
-5. STANDING
-6. LAYING
 
+<ol>
+<li>WALKING</li>
+<li>WALKING_UPSTAIRS</li>
+<li>WALKING_DOWNSTAIRS</li>
+<li>SITTING</li>
+<li>STANDING</li>
+<li>LAYING</li>
+</ol>
 
 This dataset contains mean (ie. **-mean()-**) and standard deviation (ie. **-std()-**) measures for the following measures:
 
@@ -34,15 +36,17 @@ This dataset contains mean (ie. **-mean()-**) and standard deviation (ie. **-std
 - fBodyGyroMag
 - fBodyGyroJerkMag
 
-**Total variables are therefore 66**:
-- 33 measures *em* times *em* 2 figures: mean and std
+**Total variables** are therefore **66**:
+- 33 measures *times* 2 numbers: mean and std
+and span from column 3 to column 68
+
 
 ###Dataset **"tidy_dataset"**
 Columns haev the same meaning as above. In this dataser though observations (ie. rows) contains the average of the measures that were taken for each subject.
 
 For example row 1 defines for **subject = 1** and **activity = WALKING**
-- tBodyAcc-mean()-X: the mean of al the body acceleration means over axis X measured when subject 1 was walking
-- tBodyAcc-std()-X: the mean of al the body acceleration standard deviations over axis X measured when subject 1 was walking
+- **tBodyAcc-mean()-X**: the mean of al the body acceleration means over axis X measured when subject 1 was walking
+- **tBodyAcc-std()-X**: the mean of al the body acceleration standard deviations over axis X measured when subject 1 was walking
 - ...(and so on)
 
 
